@@ -51,10 +51,10 @@ class Scaffold extends Command {
 			}
 		
 		// migration row
-			$quux = implode("\n\t",$qux);
+			$quux = implode("\n\t\t\t",$qux);
 		
 		// seeder row
-			$quackers = rtrim(implode("\n\t",$quack),',');		
+			$quackers = rtrim(implode("\n\t\t\t",$quack),',');		
 		
 		// view index
 			
@@ -76,12 +76,14 @@ class Scaffold extends Command {
 		// controller
 			$controllerpath = "{$path}/app/controllers/{$nameupperplural}Controller.php";
 			$controllerdata = strtr(File::get("{$path}/{$templatepath}/ControllerTemplate.txt"),$bladetext);
-			File::put($controllerpath, $controllerdata);
+			File::put($controllerpath, $controllerdata); 
+			$this->info("created {$path}/app/controllers/{$nameupperplural}Controller.php");
 		
 		// route 
 			$routepath = "{$path}/app/routes.php";
 			$routedata = strtr(File::get("{$path}/{$templatepath}/RouteTemplate.txt"),$bladetext);
-			File::append($routepath, "\n".$routedata);
+			File::append($routepath, "\n".$routedata); 
+			$this->info("updated {$path}/app/routes.php");
 		
 		// view 
 			$viewpath = "{$path}/app/views/{$nameplural}";
@@ -91,17 +93,24 @@ class Scaffold extends Command {
 				'create'=> strtr(File::get("{$path}/{$templatepath}/ViewCreateTemplate.txt"), $bladetext),
 				'delete'=> strtr(File::get("{$path}/{$templatepath}/ViewDeleteTemplate.txt"), $bladetext),
 				'edit'	=> strtr(File::get("{$path}/{$templatepath}/ViewEditTemplate.txt"), $bladetext));		
-			File::makeDirectory($viewpath, $mode = 0777, $recursive = false);
-			File::put("{$viewpath}/index.blade.php", $viewdata['index']);
-			File::put("{$viewpath}/page.blade.php", $viewdata['page']);
-			File::put("{$viewpath}/create.blade.php", $viewdata['create']);
-			File::put("{$viewpath}/delete.blade.php", $viewdata['delete']);
-			File::put("{$viewpath}/edit.blade.php", $viewdata['edit']);
+			File::makeDirectory($viewpath, $mode = 0777, $recursive = false); 	
+			$this->info("created directory {$path}/app/views/{$nameplural}");
+			File::put("{$viewpath}/index.blade.php", $viewdata['index']); 		
+			$this->info("created {$viewpath}/index.blade.php");
+			File::put("{$viewpath}/page.blade.php", $viewdata['page']); 		
+			$this->info("created {$viewpath}/page.blade.php");
+			File::put("{$viewpath}/create.blade.php", $viewdata['create']);	 	
+			$this->info("created {$viewpath}/create.blade.php");
+			File::put("{$viewpath}/delete.blade.php", $viewdata['delete']); 	
+			$this->info("created {$viewpath}/delete.blade.php");
+			File::put("{$viewpath}/edit.blade.php", $viewdata['edit']); 		
+			$this->info("created {$viewpath}/edit.blade.php");
 			
 		// model
 			$modelpath = "{$path}/app/models/{$nameupper}.php";
 			$modeldata = File::get("{$path}/{$templatepath}/ModelTemplate.txt"); $modeldata = strtr($modeldata,$bladetext);
 			File::put($modelpath, $modeldata);	
+			$this->info("created {$path}/app/models/{$nameupper}.php");
 		
 		// migration and seeder
 			SSH::run($migrationSSHcommand);
@@ -116,6 +125,7 @@ class Scaffold extends Command {
 			$migrationbottomlines[$fileline['migrationbottom']] =strtr(File::get("{$path}/{$templatepath}/MigrationBottomTemplate.txt"), $bladetext);
 			File::put( $migrationfile , implode( "\n", $migrationbottomlines ));
 			
+			
 			$migrationtoplines = file( $migrationfile , FILE_IGNORE_NEW_LINES );
 			$migrationtoplines[$fileline['migrationtop']] = strtr(File::get("{$path}/{$templatepath}/MigrationTopTemplate.txt"), $bladetext);
 			File::put( $migrationfile , implode( "\n", $migrationtoplines ));
@@ -125,11 +135,12 @@ class Scaffold extends Command {
 			$databaseseedlines = file( $databaseseederpath, FILE_IGNORE_NEW_LINES );
 			$databaseseedlines[$fileline['seed']] = strtr(File::get("{$path}/{$templatepath}/DatabaseSeederTemplate.txt"), $bladetext);
 			File::put( $databaseseederpath , implode( "\n", $databaseseedlines));
-		
+			$this->info("updated {$path}/app/database/seeds/DatabaseSeeder.php");
 		// seed file
 			$seederpath = "{$path}/app/database/seeds/{$nameupperplural}TableSeeder.php";
 			$seedercontent[] = strtr(File::get("{$path}/{$templatepath}/TableSeederTemplate.txt"), $bladetext);
 			File::put( $seederpath, implode("\n", $seedercontent));
+			$this->info("created {$path}/app/database/seeds/{$nameupperplural}TableSeeder.php");
 	}
 		
 	/**
