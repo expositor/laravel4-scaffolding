@@ -1,0 +1,13 @@
+Route::group(array('prefix' => '{{$nameplural}}', 'before'=>''), function(){
+	 // Get View
+	 Route::get('/', '{{$nameupperplural}}Controller@getIndex');
+	 Route::get('/create', '{{$nameupperplural}}Controller@getCreate');
+	 Route::get('/page/{id}','{{$nameupperplural}}Controller@getPage');
+	 Route::get('/edit/{id}', '{{$nameupperplural}}Controller@getEdit');
+	 Route::get('/delete/{id}', '{{$nameupperplural}}Controller@getDelete');
+
+	 // Post form submissions.
+	 Route::post('/create', '{{$nameupperplural}}Controller@postCreate');
+	 Route::post('/edit', '{{$nameupperplural}}Controller@postEdit');
+	 Route::post('/delete', '{{$nameupperplural}}Controller@postDelete');
+});

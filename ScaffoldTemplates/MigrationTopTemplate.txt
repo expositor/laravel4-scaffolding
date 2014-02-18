@@ -1,0 +1,6 @@
+		Schema::create('{{$nameplural}}', function($table)
+		{
+			$table->increments('id');
+			{{$quux}}
+			$table->timestamps();
+		});

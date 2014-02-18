@@ -1,0 +1,28 @@
+<?php
+
+class {{$nameupperplural}}TableSeeder extends Seeder {
+
+	public function run()
+	{
+		
+		// Uncomment the below to wipe the table clean before populating
+		// DB::table('{{$nameplural}}')->truncate();
+		
+		${{$nameplural}} = array(
+			
+			array(
+			
+			{{$quackers}}
+				
+			),
+			
+			array(
+
+			{{$quackers}}
+
+			)
+		);
+		
+		DB::table('{{$nameplural}}')->insert(${{$nameplural}});
+	}
+}
