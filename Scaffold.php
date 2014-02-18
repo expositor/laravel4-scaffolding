@@ -34,21 +34,22 @@ class Scaffold extends Command {
 	 	
 	
 	//NAME CONVERTOR
-		$name = Str::lower($name);
-		$name = Str::singular($name);
-		$nameupper = Str::title($name);
-		$nameplural = Str::plural($name);
-		$nameupperplural = Str::plural($nameupper);
+        $name = Str::lower($name);
+        $name = Str::singular($name);
+        $nameupper = Str::title($name);
+        $nameplural = Str::plural($name);
+        $nameupperplural = Str::plural($nameupper);
 		
 	//ROW CONVERTOR
-		$foo = implode(":", $fielddata);
-		$bar = explode(":",$foo);
-		$baz = array_chunk($bar,3);
-		foreach ($baz as $value){
-			$qux[] = '$table->'.$value[1]."('".$value[0]."'," .$value[2].');';
-			$quack[] = "'".$value[0]."'=>'".$value[1]."',";
-			
-			}
+        $foo = implode(":", $fielddata);
+        $bar = explode(":",$foo);
+        $baz = array_chunk($bar,3);
+        foreach ($baz as $value){
+            $qux[] = '$table->'.$value[1]."('".$value[0]."'," .$value[2].');';
+            $quack[] = "'".$value[0]."'=>'".$value[1]."',";
+			$templaterowdata[] = '<td>{{$'.$name.'->'.$value[0].'}}</td>';
+			$templatenamedata[] = '<td>'.$value[0].'</td>';
+            }
 		
 		// migration row
 			$quux = implode("\n\t\t\t",$qux);
@@ -57,14 +58,18 @@ class Scaffold extends Command {
 			$quackers = rtrim(implode("\n\t\t\t",$quack),',');		
 		
 		// view index
-			
+            $templatenamedata = implode("\n\t",$templatenamedata);
+            $templaterowdata = implode("\n\t",$templaterowdata);
+		
 	//BLADE CONVERTOR
 		$bladetext = array(
 			'{{$name}}' 			=> "{$name}",
 			'{{$nameupper}}' 		=> "{$nameupper}",
 			'{{$nameplural}}' 		=> "{$nameplural}",
 			'{{$nameupperplural}}' 	=> "{$nameupperplural}",
-			'{{$quux}}' 			=> "{$quux}",
+			'{{$templaterowdata}}' 	=> "{$templaterowdata}",
+            '{{$templatenamedata}}' => "{$templatenamedata}",
+            '{{$quux}}' 			=> "{$quux}",
 			'{{$quackers}}' 		=> "{$quackers}");
 
 	

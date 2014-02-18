@@ -1,9 +1,21 @@
 @extends('layouts.basepage')
 
 @section('body')
-	<h1>{{$nameupperplural}} Page Page</h1>
-	<br>
-	{{action('{{$nameupperplural}}Controller@getPage')}}
-	<br>
-	<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
+	<h1>{{$nameupper}} {{${{$name}}->id}} Page</h1>
+	
+	{{action('{{$nameupperplural}}Controller@getPage', ${{$name}}->id)}}
+	<br><br>
+<table cellpadding="5" border = "1">
+    <tr>
+        <td>id</td>
+        {{$templatenamedata}}
+    </tr>
+    <tr>
+        <td>{{${{$name}}->id}}</td>
+        {{$templaterowdata}}
+    </tr>
+</table>
+<br>
+<a href="{{action('{{$nameupperplural}}Controller@getIndex')}}">Back to {{$nameupperplural}} Index</a>
+
 @stop

@@ -2,16 +2,22 @@
 
 @section('body')
 	<h1>{{$nameupperplural}} Index Page</h1>
-	<br>
-	{{action('{{$nameupperplural}}Controller@getIndex')}}
 	
-	<br>
-	
-	{{$quackers}}
-	@foreach ({{$nameplural}} as {{$name}})
+	{{action('{{$nameupperplural}}Controller@getIndex')}}<br><br>
+    
+<table cellpadding="5" border = "1">
+    <tr>
+        <td>id</td>
+        {{$templatenamedata}}
+        <td>link</td>
+    </tr>
+    @foreach (${{$nameplural}} as ${{$name}})
+	<tr>
+        <td>{{${{$name}}->id}}</td>
+        {{$templaterowdata}}
+        <td><a href="{{action('{{$nameupperplural}}Controller@getPage', ${{$name}}->id)}}">{{action('{{$nameupperplural}}Controller@getPage', ${{$name}}->id)}}</a> </td>
+    </tr>
 	@endforeach
 	
-	<br>
 	
-	<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
 @stop

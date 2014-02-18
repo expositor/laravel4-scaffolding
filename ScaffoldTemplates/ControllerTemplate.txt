@@ -18,7 +18,8 @@ class {{$nameupperplural}}Controller extends BaseController
 	public function getPage($id)
 	{
 		// Show the {{$nameplural}} page
-
+        ${{$name}} = {{$nameupper}}::findorfail($id);
+        return View::make('{{$nameplural}}.page',array('{{$name}}' => ${{$name}}));
 	}
 
 	public function getCreate()
