@@ -48,7 +48,7 @@ class Scaffold extends Command {
             $qux[] = '$table->'.$value[1]."('".$value[0]."'," .$value[2].');';
             $quack[] = "'".$value[0]."'=>'".$value[1]."',";
 			$templaterowdata[] = '<td>{{$'.$name.'->'.$value[0].'}}</td>';
-			$templatenamedata[] = '<td>'.$value[0].'</td>';
+			$templatenamedata[] = '<td><b>'.$value[0].'</b></td>';
             }
 		
 		// migration row
