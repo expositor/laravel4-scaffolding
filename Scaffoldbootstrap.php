@@ -42,47 +42,49 @@ class Scaffoldbootstrap extends Command {
         
         $path = dirname(dirname(dirname(dirname(__FILE__)))).'/';
         $publicpath = $path.$this->ask("Path to public folder --> {$path}");
-        
-        
-        $routepath = getcwd().'/app/routes.php';
-		$routedata = "Route::get('/', 'HomeController@getIndex');";
-		File::append($routepath, "\n".$routedata); 
+        $confirm = $this->confirm("Is {$publicpath} your public path? [yes|no]");
+          
+            if($confirm =='yes')
+            {
+                //append route 
+                $routepath = getcwd().'/app/routes.php';
+                $routedata = "Route::get('/', 'HomeController@getIndex');";
+                File::append($routepath, "\n".$routedata); 
+                
+                //install homecontroller
+                $controllerpath = getcwd().'/app/controllers/HomeController.php';
+                $controllerdata = File::get(getcwd().'/app/commands/ScaffoldTemplates/HomeControllerTemplate.txt');
+                File::put($controllerpath, $controllerdata); 
 
-        $controllerpath = getcwd().'/app/controllers/HomeController.php';
-        $controllerdata = File::get(getcwd().'/app/commands/ScaffoldTemplates/HomeControllerTemplate.txt');
-        File::put($controllerpath, $controllerdata); 
-        
-        $viewpath = getcwd().'/app/views/home';
-        $viewdata = "@extends('layouts.basepage')";
-        File::makeDirectory($viewpath, $mode = 0777, $recursive = false); 	
-        File::put("{$viewpath}/index.blade.php", $viewdata);
-        
-        
-        
-        $destinationassetspath = $publicpath.'/assets';
-        $templateassetspath = getcwd().'/app/commands/ScaffoldBootstrap/Bootstrap';
-        File::makeDirectory($destinationassetspath, $mode = 0777, $recursive = false);
-        File::copyDirectory($templateassetspath, $destinationassetspath, $options = null);
-        
-        $destinationlayoutspath = getcwd().'/app/views/layouts';
-        $templatelayoutspath = getcwd().'/app/commands/ScaffoldBootstrap/layouts';
-        File::makeDirectory($destinationlayoutspath, $mode = 0777, $recursive = false);
-        File::copyDirectory($templatelayoutspath, $destinationlayoutspath, $options = null);
-
-
-        
-        
+                //install layouts view
+                $destinationlayoutspath = getcwd().'/app/views/layouts';
+                $templatelayoutspath = getcwd().'/app/commands/ScaffoldBootstrap/layouts';
+                File::makeDirectory($destinationlayoutspath, $mode = 0777, $recursive = false);
+                File::copyDirectory($templatelayoutspath, $destinationlayoutspath, $options = null);
+                
+                //install home index view
+                $viewpath = getcwd().'/app/views/home';
+                $viewdata = "@extends('layouts.basepage')";
+                File::makeDirectory($viewpath, $mode = 0777, $recursive = false); 	
+                File::put("{$viewpath}/index.blade.php", $viewdata);
+                
+                //install bootstrap
+                $destinationassetspath = $publicpath.'/assets';
+                $templateassetspath = getcwd().'/app/commands/ScaffoldBootstrap/Bootstrap';
+                File::makeDirectory($destinationassetspath, $mode = 0777, $recursive = false);
+                File::copyDirectory($templateassetspath, $destinationassetspath, $options = null);
+            }
+            else
+            {
+                exit;
+            }
     }
 
-	/**
-	 * Get the console command arguments.
-	 *
-	 * @return array
-	 */
 	protected function getArguments()
 	{
 		return array(
 			array('publicpath', InputArgument::OPTIONAL, 'An example argument.'),
+            array('confirm', InputArgument::OPTIONAL, 'An example argument.'),
 		);
 	}
 

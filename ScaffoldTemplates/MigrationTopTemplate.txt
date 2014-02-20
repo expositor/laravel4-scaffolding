@@ -1,6 +1,8 @@
 		Schema::create('{{$nameplural}}', function($table)
 		{
 			$table->increments('id');
-			{{$quux}}
+			{{$threefieldmigrationrow}}
+			{{$twofieldmigrationrow}}
 			$table->timestamps();
+			$table->softDeletes();
 		});
