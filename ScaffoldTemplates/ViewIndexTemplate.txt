@@ -5,7 +5,7 @@
 	
 	{{action('{{$nameupperplural}}Controller@getIndex')}}<br><br>
     
-<table cellpadding="5" border = "1">
+<table class="table table-condensed table-hover">
     <tr>
         <td>id</td>
         {{$templatenamedata}}

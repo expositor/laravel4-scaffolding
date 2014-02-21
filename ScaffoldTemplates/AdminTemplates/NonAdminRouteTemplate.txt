@@ -1,0 +1,6 @@
+Route::group(array('prefix' => '{{$nameplural}}', 'before'=>''), function(){
+	 // Get View
+	 Route::get('/', '{{$nameupperplural}}Controller@getIndex');
+	 Route::get('/page/{id}','{{$nameupperplural}}Controller@getPage');
+
+});

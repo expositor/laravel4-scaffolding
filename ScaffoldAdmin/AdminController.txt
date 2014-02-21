@@ -1,0 +1,17 @@
+<?php
+class AdminController extends BaseController
+{
+	//private \$test;
+	//private \$test;
+	//private \$test;
+	
+	//private \$test;
+	//private \$test;
+	
+	public function getIndex()
+	{
+		// Show the admin index
+		
+		return View::make('admin.index');
+	}
+}

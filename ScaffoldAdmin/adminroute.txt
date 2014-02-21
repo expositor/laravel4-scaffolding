@@ -1,0 +1,8 @@
+Route::group(array('prefix' => 'admin', 'before'=>''), function(){
+	// ##Get Admin Index View##
+	Route::get('/', 'AdminController@getIndex');
+	// ######################## //
+	
+	
+
+});

@@ -4,7 +4,7 @@ use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 
-class Scaffoldbootstrap extends Command {
+class scaffoldbootstrap extends Command {
 
 	/**
 	 * The console command name.
@@ -53,7 +53,7 @@ class Scaffoldbootstrap extends Command {
                 
                 //install homecontroller
                 $controllerpath = getcwd().'/app/controllers/HomeController.php';
-                $controllerdata = File::get(getcwd().'/app/commands/ScaffoldTemplates/HomeControllerTemplate.txt');
+                $controllerdata = File::get(getcwd().'/app/commands/ScaffoldBootstrap/HomeControllerTemplate.txt');
                 File::put($controllerpath, $controllerdata); 
 
                 //install layouts view

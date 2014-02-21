@@ -1,0 +1,25 @@
+<?php
+class {{$nameupperplural}}Controller extends BaseController
+{
+	//private \$test;
+	//private \$test;
+	//private \$test;
+	
+	//private \$test;
+	//private \$test;
+	
+	public function getIndex()
+	{
+		// Show the {{$nameplural}} index
+		${{$nameplural}} = {{$nameupper}}::all();
+		return View::make('{{$nameplural}}.index', compact('{{$nameplural}}'));
+	}
+
+	public function getPage($id)
+	{
+		// Show the {{$nameplural}} page
+        ${{$name}} = {{$nameupper}}::findorfail($id);
+        return View::make('{{$nameplural}}.page',array('{{$name}}' => ${{$name}}));
+	}
+
+}

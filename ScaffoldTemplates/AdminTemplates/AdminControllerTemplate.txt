@@ -1,0 +1,50 @@
+<?php
+class Admin{{$nameupperplural}}Controller extends BaseController
+{
+	//private \$test;
+	//private \$test;
+	//private \$test;
+	
+	//private \$test;
+	//private \$test;
+	
+
+	 public function getIndex()
+    {
+		
+        return View::make('admin.{{$nameplural}}.index');
+    }
+	
+	public function getCreate()
+	{
+		// Show the create {{$nameplural}} form.
+		return View::make('admin.{{$nameplural}}.create');
+	}
+
+	public function getEdit({{$nameupperplural}} ${{$name}})
+	{
+		// Show the edit {{$nameplural}} form.
+		return View::make('admin.{{$nameplural}}.edit');
+	}
+
+	public function getDelete()
+	{
+		// Show the delete {{$nameplural}} confirmation page.
+		return View::make('admin.{{$nameplural}}.delete');
+	}
+
+	public function postCreate()
+	{
+		// {{$nameplural}} Post create form submission.
+	}
+
+	public function postEdit()
+	{
+		// {{$nameplural}} Post edit form submission.
+	}
+
+	public function postDelete()
+	{
+		// {{$nameplural}} Post the delete confirmation.
+	}
+}

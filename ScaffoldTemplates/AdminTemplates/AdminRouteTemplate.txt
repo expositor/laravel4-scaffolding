@@ -1,0 +1,13 @@
+	
+	// Admin {{$nameplural}} section
+	Route::group(array('prefix' => '{{$nameplural}}', 'before'=>''), function(){
+		// Get {{$nameplural}} view 
+		Route::get('/', 'Admin{{$nameupperplural}}Controller@getIndex');
+		Route::get('/create', 'Admin{{$nameupperplural}}Controller@getCreate');
+		Route::get('/edit/{id}', 'Admin{{$nameupperplural}}Controller@getEdit');
+		Route::get('/delete/{id}', 'Admin{{$nameupperplural}}Controller@getDelete');
+
+		// Post {{$nameplural}} submissions
+		Route::post('/create', 'Admin{{$nameupperplural}}Controller@postCreate');
+		Route::post('/edit', 'Admin{{$nameupperplural}}Controller@postEdit');
+		Route::post('/delete', 'Admin{{$nameupperplural}}Controller@postDelete');});

@@ -1,0 +1,7 @@
+@extends('layouts.basepage')
+
+@section('body')
+	<h1>Admin Index Page</h1>
+	
+	{{action('AdminController@getIndex')}}<br><br>
+@stop
