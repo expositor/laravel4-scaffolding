@@ -1,11 +1,11 @@
 {
-    "name": "way/generators",
+    "name": "expositor/laravel4-scaffolding",
     "description": "Laravel 4 Generators",
     "keywords": ["laravel", "generators", "artisan"],
     "authors": [
         {
-            "name": "Jeffrey Way",
-            "email": "jeffrey@jeffrey-way.com"
+            "name": "",
+            "email": ""
         }
     ],
     "require": {
@@ -25,5 +25,5 @@
         ]
     },
 
-    "minimum-stability": "alpha"
+    "minimum-stability": "*"
 }
