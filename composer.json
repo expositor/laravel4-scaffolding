@@ -1,0 +1,32 @@
+{
+    "name": "way/generators",
+    "description": "Laravel 4 Generators",
+    "keywords": ["laravel", "generators", "artisan"],
+    "authors": [
+        {
+            "name": "Jeffrey Way",
+            "email": "jeffrey@jeffrey-way.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "mustache/mustache": "2.4.*"
+    },
+    "require-dev": {
+
+    },
+    "autoload": {
+        "psr-0": {
+            "expositor\\laravel4-scaffolding": "src/"
+        },
+        "classmap": [
+            "src/Way/Generators/Generators"
+        ]
+    },
+     "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    },
+    "minimum-stability": "stable"
+}
