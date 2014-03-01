@@ -1,26 +1,9 @@
 {
-    "name": "expositor/laravel4-scaffolding",
-    "description": "Laravel 4 Generators",
-    "keywords": [
-        "laravel",
-        "generators",
-        "artisan"
+    "name": "My Repository",
+    "homepage": "http://packages.example.org",
+    "repositories": [
+        { "type": "vcs", "url": "https://github.com/expositor/laravel4-scaffolding.git" }
+
     ],
-    "authors": [
-        {
-            "name": "",
-            "email": ""
-        }
-    ],
-    "require": {
-        "php": ">=5.3.0"
-    },
-    "autoload": {
-        "psr-0": {
-            "expositor\\laravel4-scaffolding": "src/"
-        },
-        "classmap": [
-            "src/Way/Generators/Generators"
-        ]
-    }
+    "require-all": true
 }
