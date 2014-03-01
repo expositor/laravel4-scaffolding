@@ -1,9 +1,25 @@
 {
-    "name": "My Repository",
-    "homepage": "http://packages.example.org",
-    "repositories": [
-        { "type": "vcs", "url": "https://github.com/expositor/laravel4-scaffolding.git" }
-
+    "name": "expositor / laravel4-scaffolding",
+    "description": "",
+    "keywords": [""],
+    "authors": [
+        {
+            "name": "expositor",
+            "email": "lee4runner@hotmail.com"
+        }
     ],
-    "require-all": true
+
+    "require": {
+        "php": ">=5.3.0"
+        
+    },
+    "autoload": {
+        "classmap": [
+            "src/migrations"
+        ],
+        "psr-0": {
+            "expositor\\laravel4-scaffolding": "src/"
+        }
+    },
+    "minimum-stability": "dev"
 }
