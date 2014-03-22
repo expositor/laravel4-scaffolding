@@ -1,7 +1,7 @@
 laravel4-scaffolding
 ====================
 
-MASTER
+version 2
 
 Experimental Scaffolding
 
