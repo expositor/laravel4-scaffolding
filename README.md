@@ -1,6 +1,8 @@
 laravel4-scaffolding
 ====================
 
+MASTER
+
 Experimental Scaffolding
 
 The intent of this program is for me to learn Laravel in a thorough way. I know there is already a generator out there by Jeffrey Way, and by far that one is better. When I tried it, I quickly realized that I have a lot to learn before I even touch other applications. My philosophy is, if I understand a part of Laravel, I will incorporate it into the generator, otherwise, I will hold back until I learn. 
